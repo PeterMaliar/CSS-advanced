@@ -1,0 +1,10 @@
+# Ignore paths that contain user-generated content.
+build
+
+# Ignore node and npm.
+/node_modules
+
+# Ignore tmp folder.
+/tmp
+
+.env
