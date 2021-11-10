@@ -1,0 +1,112 @@
+.popup {
+    background-color: rgba($color: $color-black, $alpha: .8);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2500;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    &:target {
+        opacity: 1;
+        visibility: visible
+    }
+
+    &__content {
+        @include center-horizontal-vertical;
+        width: 75%;
+        display: table;
+        background-color: $color-white;
+        border-radius: 3px;
+        box-shadow: 0 2rem 4rem rgba($color: $color-black, $alpha: .2);
+        opacity: 0;
+        overflow: hidden;
+        transform: translate(-50%, -50%) scale(0.25);
+        transition: all .4s .2s;
+        @include respond(tab-land) {
+            display: block;
+        }
+    }
+
+    &:target &__content {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    &__left {
+        width: 33%;
+        display: table-cell;
+        @include respond(tab-land) {
+            width: 100%;
+            display: block;
+        }
+    }
+    &__image {
+        display: block;
+        object-fit: cover;
+        height: 20rem;
+        width: 50%;
+        float: left;
+        // @include respond(tab-port) {
+        //     display: flex;
+        //     flex-direction: column;
+        //     object-fit: cover;
+        //     height: 50%;
+        // }
+        @include respond(phone) {
+            width: 100%;
+            float: none;
+        }
+    }
+    &__right {
+        padding: 0 4rem;
+        vertical-align: middle;
+        display: table-cell;
+        width: 67%;
+        padding: 3rem 5rem;
+        @include respond(tab-land) {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    }
+    &__text {
+        font-size: 1.4rem;
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-grey-light-2;
+
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+        @include respond(tab-land) {
+            column-count: auto;
+        }
+    }
+    &__button {
+        display: inline-block;
+    }
+    &__close {
+        &:link,
+        &:visited {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: $color-grey-dark;
+            font-size: 5rem;
+            display: inline-block;
+            padding: .3rem;
+            line-height: .7;
+            transition: all .5s;
+            border-radius: .5rem;
+        }
+        &:hover {
+            background-color: rgba($color: #000000, $alpha: .1);
+            cursor: pointer;
+        }
+    }
+}

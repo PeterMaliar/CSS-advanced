@@ -1,0 +1,64 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin center-horizontal-vertical {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;    
+}
+
+// media query manager
+/*
+ 01 - 600       Phones
+601 - 900       Tablet portrait mode
+901 - 1200      Tablet landscape mode
+1201 - 1800     Normal desktop
+> 1801          Big desktop
+*/
+
+// breakpoints options
+// - phone
+// - tab-port
+// - tab-land
+// - big-desktop
+// 1em = 16px
+
+/* the order of media queries in desktop-first 
+website (max-width media query) should be the following:
+starting with the media queries with larger widthes then lower width */
+/*the order of media queries in mobile-first website (min-width media
+queries) should be in opposite order  */
+
+// Order to emplement media queries: _base + typograthy > general layout + grid > layout pages > compoennts
+
+@mixin respond($breakPoint) {
+    @if ($breakPoint == phone) {
+        @media screen and (max-width: 37.5em) {         // 600px
+            @content;
+        }
+    }
+    @if ($breakPoint == tab-port) {
+        @media screen and (max-width: 56.25em) {        // 900px
+            @content;
+        }
+    }
+    @if ($breakPoint == tab-land) {
+        @media screen and (max-width: 75em) {           // 1200px
+            @content;
+        }
+    }
+    @if ($breakPoint == big-desktop) {
+        // @media screen and (min-width: 112.5em) {        // 1800px
+        //     @content;
+        // }
+        @media screen and (min-width: 87.5em){
+            @content;
+        }
+    }
+}
