@@ -65,7 +65,7 @@
     &__copyright {
         width: 80%;
         float: right;
-        // NEW comment for bugsfix branch
+        // NEW comment 
         @include respond(tab-port) {
             width: 100%;
             float: none;
