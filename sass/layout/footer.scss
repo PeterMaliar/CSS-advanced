@@ -11,6 +11,7 @@
     }
     &__logo-box {
         text-align: center;
+        
         @include respond(phone) {
             margin-bottom: 4rem !important;
         }
